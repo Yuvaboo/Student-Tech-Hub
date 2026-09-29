@@ -1,0 +1,69 @@
+﻿# Supabase CLI Project Configuration
+# Generated for: Murugan Impex — Dental Platform & Knowledge Hub
+# Project ref: zvlqhrsiojkptpnewqfm
+
+[api]
+# Port to use for the local API URL.
+port = 54321
+
+[db]
+# Port to use for the local database URL.
+port = 54322
+# Port used by db diff command to initialize the shadow database.
+shadow_port = 54320
+# The database major version to use. This has to be the same as your remote database.
+major_version = 15
+
+[studio]
+enabled = true
+# Port to use for Supabase Studio.
+port = 54323
+
+[inbucket]
+# Port to use for the email testing server web interface.
+port = 54324
+
+[storage]
+# The maximum file size allowed (e.g. "5MB", "500KB").
+file_size_limit = "50MiB"
+
+[auth]
+# The base URL of your website. Used as an allow-list for redirects and for constructing URLs.
+site_url = "http://localhost:3000"
+# A list of *exact* URLs that auth providers are permitted to redirect to post authentication.
+additional_redirect_urls = [
+  "http://localhost:3000/dashboard.html",
+  "http://localhost:3000/payment-success.html"
+]
+# How long tokens are valid for, in seconds. Defaults to 3600 (1 hour).
+jwt_expiry = 3600
+# If disabled, the refresh token will never expire.
+enable_refresh_token_rotation = true
+# Allows refresh tokens to be reused after expiry, up to the specified interval in seconds.
+refresh_token_reuse_interval = 10
+
+[auth.email]
+# Allow/disallow new user signups via email to your project.
+enable_signup = true
+# If enabled, a user will be required to confirm any email change on both the old, and new email addresses.
+double_confirm_changes = true
+# If enabled, users need to confirm their email address before signing in.
+enable_confirmations = false
+
+[auth.sms]
+enable_signup = false
+
+[auth.external.google]
+enabled = true
+client_id = "env(GOOGLE_CLIENT_ID)"
+secret = "env(GOOGLE_CLIENT_SECRET)"
+
+[functions]
+# Enable JWT verification for edge functions (use service_role for admin functions)
+verify_jwt = false
+
+[functions.verify-payment]
+verify_jwt = true
+
+[functions.stripe-webhook]
+verify_jwt = false

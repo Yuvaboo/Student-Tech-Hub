@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MURUGAN IMPEX™ — Dental Imports, Medical Cargo & Knowledge Hub</title>
+  <meta name="description" content="Pan-India CDSCO Certified Dental Implants, CAD/CAM Zirconia & Surgical Instruments directly from European and Japanese manufacturers.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- TOP REGULATORY & HELPLINE ANNOUNCEMENT BAR -->
+  <aside class="top-announcement">
+    <div class="container announcement-inner">
+      <div class="announcement-left">
+        <span class="badge-cdsco">CDSCO IMPORT LICENSED</span>
+        <span>Form MD-15 Class B/C/D Implantable Medical Devices &bull; DCGI Reg: IND/IMP/2026/0894</span>
+      </div>
+      <div class="announcement-right">
+        <span>Emergency Cold-Chain Dispatch: <strong>1800-419-3368</strong></span>
+        <span class="divider">|</span>
+        <a href="login.html" class="link-btn" id="top-login-link">Doctor Portal Login</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- LIVE CUSTOMS & AIR CARGO TELEMETRY TICKER -->
+  <div class="customs-telemetry-ticker">
+    <div class="container ticker-container">
+      <div class="ticker-badge">LIVE CARGO RADAR</div>
+      <div class="ticker-track">
+        <span class="ticker-item">&#9992; LH8220 (Frankfurt &rarr; BOM): <strong>Cleared Customs — Bio-Graft Granules In Transit</strong></span>
+        <span class="ticker-sep">&bull;</span>
+        <span class="ticker-item">&#9992; NH829 (Tokyo Haneda &rarr; DEL): <strong>Cold-Chain Customs Holding Class-C Multi-Layer Zirconia</strong></span>
+        <span class="ticker-sep">&bull;</span>
+        <span class="ticker-item">&#128666; BLUEDART-MED: <strong>Chennai Hub 0-4°C Active Cold Vans En-Route to 42 Clinics</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIMARY AMAZON-STYLE MAIN HEADER -->
+  <header class="main-header">
+    <div class="container header-grid">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo">
+        <div class="brand-text">
+          <span class="brand-name">MURUGAN IMPEX</span>
+          <span style="font-size: 0.65rem; color: #38bdf8; font-weight: 700; letter-spacing: 0.08em;">DENTAL IMPORT TELEMETRY</span>
+        </div>
+      </a>
+
+      <!-- Deliver to Clinic Trigger -->
+      <div class="header-deliver" style="display: flex; flex-direction: column; cursor: pointer;" onclick="openDeliverModal()">
+        <span style="font-size: 0.7rem; color: #94a3b8;">Deliver to Clinic</span>
+        <span style="font-size: 0.85rem; font-weight: 700; color: #ffffff;" id="header-clinic-name">India (Select PIN)</span>
+      </div>
+
+      <!-- Search Bar -->
+      <div style="display: flex; flex: 1; margin: 0 1rem;">
+        <input type="text" id="search-input" placeholder="Search Grade 5 Titanium Implants, Multi-Layer Zirconia Discs, NiTi Rotary Files..." style="width: 100%; padding: 0.65rem 1rem; border-radius: 6px 0 0 6px; border: none; font-size: 0.9rem;">
+        <button style="background: #00a896; color: white; border: none; padding: 0 1.25rem; border-radius: 0 6px 6px 0; font-weight: 700; cursor: pointer;">Search</button>
+      </div>
+
+      <!-- Account & Lists Trigger -->
+      <div class="header-account" style="cursor: pointer; text-align: right;" onclick="handleAccountClick()">
+        <span style="font-size: 0.7rem; color: #94a3b8;" id="account-greeting">Hello, Doctor</span>
+        <div style="font-size: 0.85rem; font-weight: 700; color: #ffffff;" id="account-status-label">Account & Lists ▾</div>
+      </div>
+
+      <!-- Orders Link -->
+      <a href="dashboard.html" style="color: #ffffff; text-decoration: none; text-align: center;">
+        <span style="font-size: 0.7rem; color: #94a3b8; display: block;">Returns</span>
+        <span style="font-size: 0.85rem; font-weight: 700;">& Orders</span>
+      </a>
+
+      <!-- Knowledge Hub Link -->
+      <a href="knowledge.html" style="background: rgba(0, 168, 150, 0.2); border: 1px solid #00a896; color: #38bdf8; padding: 0.4rem 0.8rem; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: 700;">
+        📚 Knowledge Hub
+      </a>
+
+      <!-- Cart Trigger -->
+      <div style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; position: relative;" onclick="toggleCartDrawer()">
+        <span style="font-size: 1.5rem;">🛒</span>
+        <span id="cart-badge" style="background: #e76f51; color: white; font-size: 0.75rem; font-weight: 800; border-radius: 50%; padding: 0.15rem 0.45rem; position: absolute; top: -5px; left: 16px;">0</span>
+        <span style="font-weight: 700; font-size: 0.85rem;">Cart</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECONDARY SUB-NAV BAR -->
+  <nav style="background: #0a192f; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 0.5rem 0;">
+    <div class="container" style="display: flex; align-items: center; gap: 1.5rem; font-size: 0.85rem; overflow-x: auto; white-space: nowrap;">
+      <a href="#catalog" style="color: #ffffff; text-decoration: none; font-weight: 700;">☰ All Dental Products</a>
+      <a href="knowledge.html" style="color: #cbd5e1; text-decoration: none;">Clinical Masterclasses</a>
+      <a href="pricing.html" style="color: #f4a261; text-decoration: none; font-weight: 600;">⭐ Fellowship Membership</a>
+      <a href="dashboard.html" style="color: #cbd5e1; text-decoration: none;">Doctor Portal</a>
+      <a href="admin.html" id="admin-nav-link" style="color: #cbd5e1; text-decoration: none; display: none;">Admin Console</a>
+    </div>
+  </nav>
+
+  <!-- HERO SPOTLIGHT -->
+  <section style="background: linear-gradient(135deg, #07192f 0%, #0f2b48 60%, #00a896 100%); color: white; padding: 3rem 0;">
+    <div class="container" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; align-items: center;">
+      <div>
+        <span style="background: rgba(0, 168, 150, 0.3); border: 1px solid #00a896; color: #38bdf8; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 20px;">DIRECT EUROPEAN & JAPANESE IMPORTS</span>
+        <h1 style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin: 1rem 0;">
+          Hospital-Grade Dental Imports & Surgical Protocols
+        </h1>
+        <p style="color: #cbd5e1; font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+          Order CDSCO certified Grade 5 Titanium Implants, 3D Multi-Layer Zirconia Discs, and Gold-Treated Rotary Files with computerized GST invoices and BlueDart cold-chain air express.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#catalog" style="background: #00a896; color: white; padding: 0.8rem 1.75rem; border-radius: 8px; text-decoration: none; font-weight: 700;">Explore Direct Import Catalog</a>
+          <a href="knowledge.html" style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white; padding: 0.8rem 1.75rem; border-radius: 8px; text-decoration: none; font-weight: 600;">Clinical Knowledge Hub</a>
+        </div>
+      </div>
+      <div style="background: rgba(15, 43, 72, 0.7); border: 1px solid rgba(0, 168, 150, 0.3); border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(10px);">
+        <h3 style="font-size: 1.1rem; color: #38bdf8; margin-bottom: 1rem;">⚡ Live Import Telemetry</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.85rem;">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem;">
+            <span style="color: #94a3b8;">Active CDSCO Licenses:</span>
+            <strong>MD-15 Class B/C/D</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem;">
+            <span style="color: #94a3b8;">Cold Chain Standard:</span>
+            <strong>0°C to 4°C Monitored</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem;">
+            <span style="color: #94a3b8;">Tax Invoice Status:</span>
+            <strong style="color: #10b981;">18% GST ITC Claimable</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #94a3b8;">Express Delivery:</span>
+            <strong>Next-Day to 14 Metro Hubs</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CATALOG -->
+  <main class="container" id="catalog" style="margin-top: 3rem; margin-bottom: 4rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h2 style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 800;">Featured Dental Imports</h2>
+        <p style="color: #64748b; font-size: 0.9rem;">Batch Tested & Certified with Full Manufacturer Certificates of Analysis (CoA)</p>
+      </div>
+      <div style="display: flex; gap: 0.5rem;">
+        <button class="filter-btn active" onclick="filterCatalog('all', this)" style="padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid #00a896; background: #00a896; color: white; font-size: 0.85rem; font-weight: 600; cursor: pointer;">All Imports</button>
+        <button class="filter-btn" onclick="filterCatalog('Implants', this)" style="padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid #cbd5e1; background: white; color: #64748b; font-size: 0.85rem; font-weight: 600; cursor: pointer;">Implants</button>
+        <button class="filter-btn" onclick="filterCatalog('CAD/CAM', this)" style="padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid #cbd5e1; background: white; color: #64748b; font-size: 0.85rem; font-weight: 600; cursor: pointer;">CAD/CAM</button>
+        <button class="filter-btn" onclick="filterCatalog('Endodontics', this)" style="padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid #cbd5e1; background: white; color: #64748b; font-size: 0.85rem; font-weight: 600; cursor: pointer;">Endodontics</button>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="product-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+      <!-- Populated dynamically by script -->
+    </div>
+  </main>
+
+  <!-- CART FLYOUT DRAWER -->
+  <aside id="cart-drawer" style="position: fixed; top: 0; right: -420px; width: 400px; max-width: 90vw; height: 100vh; background: #ffffff; box-shadow: -5px 0 25px rgba(0,0,0,0.25); z-index: 9999; display: flex; flex-direction: column; transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+    <div style="background: #0f2438; color: white; padding: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+      <h3 style="font-size: 1.1rem; font-family: var(--font-heading);">Clinic Cart</h3>
+      <button onclick="toggleCartDrawer()" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">✕</button>
+    </div>
+    <div id="cart-items-container" style="flex: 1; overflow-y: auto; padding: 1.25rem;">
+      <!-- Populated dynamically -->
+    </div>
+    <div style="border-top: 1px solid #e2e8f0; padding: 1.25rem; background: #f8fafc;">
+      <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem;">
+        <span>GST (18% ITC Included):</span>
+        <span id="cart-gst-display">₹0</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 700; color: #1a202c; margin-bottom: 1rem;">
+        <span>Order Total:</span>
+        <span id="cart-total-display" style="color: #00a896;">₹0</span>
+      </div>
+      <button onclick="openCheckoutModal()" style="width: 100%; padding: 0.85rem; background: #00a896; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer;">Proceed to Clinic Checkout</button>
+    </div>
+  </aside>
+  <div id="cart-backdrop" onclick="toggleCartDrawer()" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9998;"></div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center;">
+    <div style="background: white; border-radius: 16px; width: 90%; max-width: 550px; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative;">
+      <button onclick="closeCheckoutModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer;">✕</button>
+      <h3 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.5rem;">Confirm Clinic Dispatch</h3>
+      <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1.5rem;">Direct dispatch via BlueDart Medical Express (Cold-Chain)</p>
+
+      <form id="checkout-form" onsubmit="handlePlaceOrder(event)">
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.3rem;">Doctor Name</label>
+          <input type="text" id="chk-doctor" required style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.3rem;">Clinic Name</label>
+          <input type="text" id="chk-clinic" required style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem;">
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.3rem;">DCI Registration No.</label>
+            <input type="text" id="chk-dci" required style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.3rem;">Clinic GSTIN</label>
+            <input type="text" id="chk-gstin" placeholder="Optional for ITC" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+          </div>
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.3rem;">Delivery Address</label>
+          <textarea id="chk-address" rows="2" required style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;"></textarea>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem;">
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.3rem;">City</label>
+            <input type="text" id="chk-city" required style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.3rem;">State</label>
+            <input type="text" id="chk-state" required style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.3rem;">PIN Code</label>
+            <input type="text" id="chk-pincode" required style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+          </div>
+        </div>
+        <button type="submit" id="btn-place-order" style="width: 100%; padding: 0.85rem; background: #00a896; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer;">Confirm Order & Generate Tax Invoice</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background: #07192f; color: #94a3b8; padding: 3rem 0; font-size: 0.85rem;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+      <div>
+        <h4 style="color: white; font-family: var(--font-heading); margin-bottom: 1rem;">MURUGAN IMPEX</h4>
+        <p style="line-height: 1.6;">Authorized importer of premium European & Japanese dental medical devices under CDSCO Form MD-15.</p>
+      </div>
+      <div>
+        <h4 style="color: white; margin-bottom: 1rem;">Clinical Divisions</h4>
+        <p>Dental Implantology</p>
+        <p>CAD/CAM Zirconia & Milling</p>
+        <p>Endodontic Rotary Systems</p>
+        <p>Biomaterials & Bone Grafts</p>
+      </div>
+      <div>
+        <h4 style="color: white; margin-bottom: 1rem;">Quick Portals</h4>
+        <p><a href="knowledge.html" style="color: #38bdf8; text-decoration: none;">Knowledge Hub</a></p>
+        <p><a href="pricing.html" style="color: #f4a261; text-decoration: none;">Fellowship Plans</a></p>
+        <p><a href="dashboard.html" style="color: #94a3b8; text-decoration: none;">Doctor Dashboard</a></p>
+        <p><a href="login.html" style="color: #94a3b8; text-decoration: none;">Clinic Sign In</a></p>
+      </div>
+      <div>
+        <h4 style="color: white; margin-bottom: 1rem;">Direct Support</h4>
+        <p>Helpline: 1800-419-3368</p>
+        <p>Email: support@muruganimpex.in</p>
+        <p>WhatsApp: +91 8008008008</p>
+      </div>
+    </div>
+    <div class="container" style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1.5rem; text-align: center;">
+      &copy; 2026 Murugan Impex™. All Rights Reserved. CDSCO Import License IND/IMP/2026/0894.
+    </div>
+  </footer>
+
+  <!-- MANDATORY SUPABASE SCRIPTS IN STRICT ORDER -->
+  <!-- 1. Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- 2. Supabase Configuration (creates window.supabaseClient) -->
+  <script src="supabase-config.js"></script>
+  <!-- 3. Shared Auth Module (window.Auth) -->
+  <script src="auth.js"></script>
+  <!-- 4. Storefront Logic (window.App) -->
+  <script src="app.js"></script>
+
+  <script>
+    // Products Data
+    var PRODUCTS = [
+      {
+        id: 'prod_implants_01',
+        title: 'German Titanium Implants (Grade 5 ELI)',
+        category: 'Implants',
+        price: 3850,
+        origin: 'Tuttlingen, Germany',
+        batch_lot: 'LOT-DE26-904',
+        hsn_code: '9021',
+        image: 'assets/images/german-titanium-implants.jpg',
+        description: 'SLA Active Hydrophilic surface with internal hex connection. CDSCO approved.'
+      },
+      {
+        id: 'prod_zirconia_02',
+        title: 'Kyoto 3D Multi-Layer Zirconia Discs (98mm)',
+        category: 'CAD/CAM',
+        price: 6490,
+        origin: 'Kyoto, Japan',
+        batch_lot: 'LOT-JP26-441',
+        hsn_code: '6909',
+        image: 'assets/images/kyoto-zirconia-discs.jpg',
+        description: 'Graded translucency 49%-43%, 1200 MPa bending strength for full-arch bridges.'
+      },
+      {
+        id: 'prod_rotary_03',
+        title: 'Swiss Gold Heat-Treated Rotary Files (Pack of 6)',
+        category: 'Endodontics',
+        price: 1850,
+        origin: 'La Chaux-de-Fonds, Switzerland',
+        batch_lot: 'LOT-CH26-118',
+        hsn_code: '9018',
+        image: 'assets/images/swiss-rotary-files.jpg',
+        description: 'Superior cyclic fatigue resistance, variable taper progressive geometry.'
+      },
+      {
+        id: 'prod_bonegraft_04',
+        title: 'Swiss Bio-Oss Xenograft Granules (0.5g / 0.5-1.0mm)',
+        category: 'Implants',
+        price: 4950,
+        origin: 'Basel, Switzerland',
+        batch_lot: 'LOT-CH26-809',
+        hsn_code: '3006',
+        image: 'assets/images/swiss-bone-graft.jpg',
+        description: 'Bovine deproteinized bone mineral with natural trabecular pore structure.'
+      },
+      {
+        id: 'prod_composite_05',
+        title: 'BioFill Nano-Hybrid Composite Syringe Kit',
+        category: 'Restorative',
+        price: 2450,
+        origin: 'Liechtenstein',
+        batch_lot: 'LOT-LI26-302',
+        hsn_code: '3006',
+        image: 'assets/images/biofill-composite-resin.jpg',
+        description: '82% filler by weight, low shrinkage stress, chameleon shade match.'
+      },
+      {
+        id: 'prod_ortho_06',
+        title: 'Roth 022 Prescription Metal Bracket Kit',
+        category: 'Orthodontics',
+        price: 1650,
+        origin: 'Osaka, Japan',
+        batch_lot: 'LOT-JP26-612',
+        hsn_code: '9021',
+        image: 'assets/images/ortho-brackets-kit.jpg',
+        description: 'MIM 80-mesh gauge base, ultra-low profile with colored torque markers.'
+      }
+    ];
+
+    document.addEventListener('DOMContentLoaded', async function () {
+      renderProducts(PRODUCTS);
+      updateCartUI();
+
+      // Check current user
+      if (window.Auth) {
+        var user = await window.Auth.getCurrentUser();
+        var profile = await window.Auth.getCurrentProfile();
+        if (user) {
+          var name = (profile && profile.full_name) ? profile.full_name : (user.email ? user.email.split('@')[0] : 'Doctor');
+          document.getElementById('account-greeting').textContent = 'Hello, ' + name;
+          document.getElementById('account-status-label').textContent = 'Clinic Portal ▾';
+          document.getElementById('top-login-link').textContent = 'My Clinic Portal';
+          document.getElementById('top-login-link').href = 'dashboard.html';
+
+          if (profile && profile.clinic_name) {
+            document.getElementById('header-clinic-name').textContent = profile.clinic_name;
+          }
+
+          if (profile && profile.role === 'admin') {
+            var adminNav = document.getElementById('admin-nav-link');
+            if (adminNav) adminNav.style.display = 'inline-block';
+          }
+        }
+      }
+    });
+
+    function renderProducts(items) {
+      var grid = document.getElementById('product-grid');
+      var html = '';
+      items.forEach(function (p) {
+        html += '<div style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s;">';
+        html += '<div style="height: 200px; background: #f8fafc; overflow: hidden; display: flex; align-items: center; justify-content: center;">';
+        html += '<img src="' + p.image + '" alt="' + p.title + '" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null;this.src=\'data:image/svg+xml,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'200\\\' height=\\\'200\\\'><rect width=\\\'200\\\' height=\\\'200\\\' fill=\\\'%23f1f5f9\\\'/><text x=\\\'50%\\\' y=\\\'50%\\\' fill=\\\'%2394a3b8\\\' text-anchor=\\\'middle\\\' font-size=\\\'16\\\'>Medical Device</text></svg>\'">';
+        html += '</div>';
+        html += '<div style="padding: 1.25rem; flex: 1; display: flex; flex-direction: column;">';
+        html += '<div style="font-size: 0.75rem; color: #00a896; font-weight: 700; margin-bottom: 0.25rem;">' + p.origin.toUpperCase() + '</div>';
+        html += '<h3 style="font-size: 1rem; font-weight: 700; color: #1a202c; line-height: 1.3; margin-bottom: 0.5rem;">' + p.title + '</h3>';
+        html += '<p style="font-size: 0.8rem; color: #64748b; line-height: 1.4; margin-bottom: 1rem; flex: 1;">' + p.description + '</p>';
+        html += '<div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid #f1f5f9;">';
+        html += '<div>';
+        html += '<div style="font-size: 1.2rem; font-weight: 800; color: #0f2438;">₹' + p.price.toLocaleString('en-IN') + '</div>';
+        html += '<div style="font-size: 0.7rem; color: #10b981; font-weight: 600;">+ 18% GST (ITC Claimable)</div>';
+        html += '</div>';
+        html += '<button onclick="handleAddToCart(\'' + p.id + '\')" style="background: #00a896; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer;">Add to Cart</button>';
+        html += '</div>';
+        html += '</div></div>';
+      });
+      grid.innerHTML = html;
+    }
+
+    function filterCatalog(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(function (b) {
+        b.style.background = 'white';
+        b.style.color = '#64748b';
+        b.style.borderColor = '#cbd5e1';
+      });
+      btn.style.background = '#00a896';
+      btn.style.color = 'white';
+      btn.style.borderColor = '#00a896';
+
+      if (category === 'all') {
+        renderProducts(PRODUCTS);
+      } else {
+        var filtered = PRODUCTS.filter(function (p) { return p.category === category; });
+        renderProducts(filtered);
+      }
+    }
+
+    function handleAddToCart(id) {
+      var product = PRODUCTS.find(function (p) { return p.id === id; });
+      if (product && window.App) {
+        window.App.addToCart(product, 1);
+        updateCartUI();
+      }
+    }
+
+    function updateCartUI() {
+      if (!window.App) return;
+      var count = window.App.getCartCount();
+      var subtotal = window.App.getCartSubtotal();
+      var gst = subtotal * 0.18;
+      var total = subtotal + gst;
+
+      document.getElementById('cart-badge').textContent = count;
+      document.getElementById('cart-gst-display').textContent = '₹' + gst.toLocaleString('en-IN', { maximumFractionDigits: 2 });
+      document.getElementById('cart-total-display').textContent = '₹' + total.toLocaleString('en-IN', { maximumFractionDigits: 2 });
+
+      var container = document.getElementById('cart-items-container');
+      var cart = window.App.getCart();
+
+      if (cart.length === 0) {
+        container.innerHTML = '<div style="text-align: center; color: #94a3b8; padding: 3rem 1rem;">Your clinic cart is empty.<br><span style="font-size: 0.8rem;">Add certified medical devices above.</span></div>';
+        return;
+      }
+
+      var html = '';
+      cart.forEach(function (item) {
+        html += '<div style="display: flex; gap: 0.75rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">';
+        html += '<div style="flex: 1;">';
+        html += '<div style="font-weight: 700; font-size: 0.85rem; color: #1e293b;">' + item.title + '</div>';
+        html += '<div style="font-size: 0.75rem; color: #64748b;">₹' + item.price.toLocaleString('en-IN') + ' &bull; Qty: ' + item.quantity + '</div>';
+        html += '</div>';
+        html += '<div style="text-align: right;">';
+        html += '<div style="font-weight: 700; font-size: 0.9rem; color: #00a896;">₹' + (item.price * item.quantity).toLocaleString('en-IN') + '</div>';
+        html += '<button onclick="window.App.removeFromCart(\'' + item.id + '\'); updateCartUI();" style="background: none; border: none; color: #ef4444; font-size: 0.75rem; cursor: pointer;">Remove</button>';
+        html += '</div></div>';
+      });
+      container.innerHTML = html;
+    }
+
+    function toggleCartDrawer() {
+      var drawer = document.getElementById('cart-drawer');
+      var backdrop = document.getElementById('cart-backdrop');
+      if (drawer.style.right === '0px') {
+        drawer.style.right = '-420px';
+        backdrop.style.display = 'none';
+      } else {
+        drawer.style.right = '0px';
+        backdrop.style.display = 'block';
+      }
+    }
+
+    async function openCheckoutModal() {
+      if (!window.Auth) return;
+      var user = await window.Auth.getCurrentUser();
+      if (!user) {
+        window.location.href = 'login.html?redirect=index.html';
+        return;
+      }
+      var cart = window.App.getCart();
+      if (cart.length === 0) {
+        window.Auth.showToast('Please add items to cart first.', 'warning');
+        return;
+      }
+      var profile = await window.Auth.getCurrentProfile();
+      if (profile) {
+        document.getElementById('chk-doctor').value = profile.full_name || '';
+        document.getElementById('chk-clinic').value = profile.clinic_name || '';
+        document.getElementById('chk-dci').value = profile.dci_number || '';
+        document.getElementById('chk-gstin').value = profile.gstin || '';
+        document.getElementById('chk-address').value = profile.address || '';
+        document.getElementById('chk-city').value = profile.city || '';
+        document.getElementById('chk-state').value = profile.state || '';
+        document.getElementById('chk-pincode').value = profile.pincode || '';
+      }
+      document.getElementById('checkout-modal').style.display = 'flex';
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkout-modal').style.display = 'none';
+    }
+
+    async function handlePlaceOrder(e) {
+      e.preventDefault();
+      var btn = document.getElementById('btn-place-order');
+      btn.disabled = true;
+      btn.textContent = 'Generating Tax Invoice & Booking Cold-Chain...';
+
+      var shippingInfo = {
+        doctor_name: document.getElementById('chk-doctor').value,
+        clinic_name: document.getElementById('chk-clinic').value,
+        dci_number: document.getElementById('chk-dci').value,
+        gstin: document.getElementById('chk-gstin').value,
+        address: document.getElementById('chk-address').value,
+        city: document.getElementById('chk-city').value,
+        state: document.getElementById('chk-state').value,
+        pincode: document.getElementById('chk-pincode').value
+      };
+
+      var result = await window.App.placeOrder(shippingInfo);
+      btn.disabled = false;
+      btn.textContent = 'Confirm Order & Generate Tax Invoice';
+
+      if (result.error) {
+        window.Auth.showToast(result.error.message, 'error');
+      } else {
+        closeCheckoutModal();
+        toggleCartDrawer();
+        updateCartUI();
+        window.Auth.showToast('Order confirmed! AWB: ' + result.awbNumber, 'success', 6000);
+        setTimeout(function () {
+          window.location.href = 'dashboard.html';
+        }, 1200);
+      }
+    }
+
+    async function handleAccountClick() {
+      var user = await window.Auth.getCurrentUser();
+      if (user) {
+        window.location.href = 'dashboard.html';
+      } else {
+        window.location.href = 'login.html';
+      }
+    }
+
+    function openDeliverModal() {
+      var pin = prompt('Enter your 6-digit clinic delivery PIN code:', '600001');
+      if (pin && pin.length === 6) {
+        document.getElementById('header-clinic-name').textContent = 'PIN ' + pin;
+        window.Auth.showToast('Updated cold-chain delivery zone to ' + pin, 'info');
+      }
+    }
+  </script>
+</body>
+</html>

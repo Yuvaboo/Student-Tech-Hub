@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical Knowledge Hub & Surgical Masterclasses — Murugan Impex™</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="knowledge.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Announcement -->
+  <aside class="top-announcement">
+    <div class="container announcement-inner">
+      <div class="announcement-left">
+        <span class="badge-cdsco">CLINICAL EDUCATION DESK</span>
+        <span>Peer-Reviewed Protocols for Dental Surgeons & Prosthodontists</span>
+      </div>
+      <div class="announcement-right">
+        <a href="index.html" class="link-btn">← Back to Storefront</a>
+        <span class="divider">|</span>
+        <a href="pricing.html" class="link-btn" style="color: #f4a261;">Fellowship Membership</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navigation Bar -->
+  <header style="background: #0f2438; color: white; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+        <span style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800;">MURUGAN IMPEX</span>
+        <span style="background: #00a896; color: white; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px;">KNOWLEDGE HUB</span>
+      </a>
+      <div style="display: flex; align-items: center; gap: 1.25rem;">
+        <a href="index.html" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Storefront</a>
+        <a href="pricing.html" style="color: #f4a261; text-decoration: none; font-weight: 700; font-size: 0.9rem;">⭐ Fellowship Access</a>
+        <a href="dashboard.html" style="color: #cbd5e1; text-decoration: none; font-size: 0.9rem;">Doctor Portal</a>
+        <a href="login.html" id="nav-login-btn" style="background: #00a896; color: white; padding: 0.4rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.85rem;">Clinic Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="margin-top: 2.5rem; margin-bottom: 4rem;">
+    <!-- Hero Banner -->
+    <div class="kh-hero">
+      <div style="max-width: 650px;">
+        <span class="kh-badge-premium" style="margin-bottom: 1rem;">CLINICAL FELLOWSHIP & SURGICAL PAPERS</span>
+        <h1 style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem;">
+          Dental Masterclasses, CBCT Analysis & CAD/CAM Guides
+        </h1>
+        <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+          Verified clinical workflows authored by leading implantologists and maxillofacial surgeons across India, Germany, and Switzerland.
+        </p>
+        <a href="pricing.html" style="display: inline-block; background: #f59e0b; color: #07192f; padding: 0.75rem 1.75rem; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.95rem;">Join Fellowship (Unlock All Protocols)</a>
+      </div>
+    </div>
+
+    <!-- Category Filter Strip -->
+    <div id="category-filter-container"></div>
+
+    <!-- Articles Container -->
+    <div id="articles-container"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: #07192f; color: #94a3b8; padding: 2.5rem 0; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="container" style="text-align: center;">
+      <p>&copy; 2026 Murugan Impex™ Clinical Desk. Strictly for licensed dental medical practitioners.</p>
+    </div>
+  </footer>
+
+  <!-- MANDATORY SUPABASE SCRIPTS IN STRICT ORDER -->
+  <!-- 1. Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- 2. Supabase Configuration (creates window.supabaseClient) -->
+  <script src="supabase-config.js"></script>
+  <!-- 3. Shared Auth Module (window.Auth) -->
+  <script src="auth.js"></script>
+  <!-- 4. Storefront Logic (window.App) -->
+  <script src="app.js"></script>
+  <!-- 5. Knowledge Hub Module (window.Knowledge) -->
+  <script src="knowledge.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      if (window.Auth) {
+        var user = await window.Auth.getCurrentUser();
+        if (user) {
+          document.getElementById('nav-login-btn').textContent = 'My Clinic Portal';
+          document.getElementById('nav-login-btn').href = 'dashboard.html';
+        }
+      }
+
+      var filterContainer = document.getElementById('category-filter-container');
+      var articlesContainer = document.getElementById('articles-container');
+
+      if (window.Knowledge) {
+        window.Knowledge.setupCategoryFilter(filterContainer, articlesContainer);
+        await window.Knowledge.renderArticleList(articlesContainer, { tier: 'all' });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fellowship Plans & Subscription — Murugan Impex™</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+    .pricing-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-lg, 16px);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+    .pricing-card.featured {
+      border: 2px solid #00a896;
+      box-shadow: 0 20px 25px -5px rgba(0, 168, 150, 0.15);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: #00a896;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+    }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+      flex: 1;
+    }
+    .feature-list li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: #475569;
+    }
+    .feature-list li strong {
+      color: #1e293b;
+    }
+  </style>
+</head>
+<body style="background: var(--bg-main, #f4f7fa);">
+
+  <header style="background: #07192f; color: white; padding: 1.25rem 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" style="color: white; text-decoration: none; font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800;">
+        MURUGAN IMPEX™
+      </a>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="knowledge.html" style="color: #cbd5e1; text-decoration: none; font-size: 0.85rem;">Knowledge Hub</a>
+        <a href="dashboard.html" style="color: #cbd5e1; text-decoration: none; font-size: 0.85rem;">Doctor Portal</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="margin-top: 3rem; margin-bottom: 4rem; text-align: center;">
+    <span style="background: rgba(0, 168, 150, 0.15); color: #00a896; font-size: 0.8rem; font-weight: 800; padding: 0.3rem 0.8rem; border-radius: 20px; border: 1px solid rgba(0, 168, 150, 0.3);">PAN-INDIA CLINICAL FELLOWSHIP</span>
+    <h1 style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; color: #0f2438; margin: 1rem 0 0.5rem;">
+      Elevate Your Dental Surgical Practice
+    </h1>
+    <p style="color: #64748b; font-size: 1.05rem; max-width: 600px; margin: 0 auto 2rem;">
+      Select the plan that matches your clinic's surgical volume. Fully claimable with computerized 18% GST tax invoices.
+    </p>
+
+    <div class="pricing-grid">
+      <!-- Monthly Practice Plan -->
+      <div class="pricing-card">
+        <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: #0f2438; margin-bottom: 0.5rem;">Monthly Practice</h3>
+        <p style="color: #64748b; font-size: 0.85rem;">Ideal for independent clinics & consulting surgeons.</p>
+        
+        <div style="margin: 1.5rem 0;">
+          <span style="font-size: 2.75rem; font-weight: 800; color: #0f2438;">₹1,499</span>
+          <span style="color: #64748b; font-size: 0.9rem;">/ month</span>
+          <div style="font-size: 0.75rem; color: #10b981; font-weight: 600; margin-top: 0.25rem;">+ 18% GST (ITC Claimable)</div>
+        </div>
+
+        <ul class="feature-list" style="text-align: left;">
+          <li><span style="color: #00a896;">✓</span> Access to 40+ Peer-Reviewed Protocols</li>
+          <li><span style="color: #00a896;">✓</span> BlueDart Cold-Chain Cargo Tracking</li>
+          <li><span style="color: #00a896;">✓</span> Computerized GST Tax Invoices</li>
+          <li><span style="color: #00a896;">✓</span> Realtime Clinical Query Discussion</li>
+        </ul>
+
+        <button onclick="handleSubscribe('monthly')" style="width: 100%; padding: 0.85rem; background: #0f2438; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer;">Select Monthly Practice</button>
+      </div>
+
+      <!-- Annual Fellowship Plan -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">MOST POPULAR &bull; SAVE ₹5,989</div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: #0f2438; margin-bottom: 0.5rem;">Annual Fellowship</h3>
+        <p style="color: #64748b; font-size: 0.85rem;">Complete mastery & wholesale cargo import discount.</p>
+        
+        <div style="margin: 1.5rem 0;">
+          <span style="font-size: 2.75rem; font-weight: 800; color: #00a896;">₹12,999</span>
+          <span style="color: #64748b; font-size: 0.9rem;">/ year</span>
+          <div style="font-size: 0.75rem; color: #10b981; font-weight: 600; margin-top: 0.25rem;">Effective ₹1,083/mo &bull; + 18% GST</div>
+        </div>
+
+        <ul class="feature-list" style="text-align: left;">
+          <li><span style="color: #00a896;">✓</span> <strong>Everything in Monthly Practice</strong></li>
+          <li><span style="color: #00a896;">✓</span> <strong>Full Access to Gated Surgical Masterclasses</strong></li>
+          <li><span style="color: #00a896;">✓</span> <strong>Downloadable High-Res Protocols & CoAs</strong></li>
+          <li><span style="color: #00a896;">✓</span> <strong>Certificate of Clinical Fellowship</strong></li>
+          <li><span style="color: #00a896;">✓</span> <strong>10% Priority Discount on Direct Cargo</strong></li>
+        </ul>
+
+        <button onclick="handleSubscribe('annual')" style="width: 100%; padding: 0.85rem; background: #00a896; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer;">Activate Annual Fellowship</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- MANDATORY SUPABASE SCRIPTS IN STRICT ORDER -->
+  <!-- 1. Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- 2. Supabase Configuration (creates window.supabaseClient) -->
+  <script src="supabase-config.js"></script>
+  <!-- 3. Shared Auth Module (window.Auth) -->
+  <script src="auth.js"></script>
+  <!-- 4. Storefront Logic (window.App) -->
+  <script src="app.js"></script>
+
+  <script>
+    async function handleSubscribe(plan) {
+      if (!window.Auth) return;
+      var user = await window.Auth.getCurrentUser();
+      if (!user) {
+        window.location.href = 'login.html?redirect=pricing.html';
+        return;
+      }
+      if (window.App) {
+        await window.App.startSubscriptionCheckout(plan);
+      }
+    }
+  </script>
+</body>
+</html>

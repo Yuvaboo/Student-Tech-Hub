@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor & Clinic Portal — Murugan Impex™</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .portal-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: calc(100vh - 120px);
+    }
+    .portal-sidebar {
+      background: #0f2438;
+      color: #cbd5e1;
+      padding: 1.5rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .portal-content {
+      padding: 2rem;
+      background: var(--bg-main, #f4f7fa);
+    }
+    .sidebar-btn {
+      width: 100%;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+      transition: all 0.2s;
+    }
+    .sidebar-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+    }
+    .sidebar-btn.active {
+      background: #00a896;
+      color: #ffffff;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: var(--radius-lg, 16px);
+      padding: 1.5rem;
+      border: 1px solid var(--border-subtle, #e2e8f0);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .portal-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Simple Header -->
+  <header style="background: #07192f; color: white; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+    <a href="index.html" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+      <span style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800;">MURUGAN IMPEX™</span>
+      <span style="background: #00a896; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px;">DOCTOR PORTAL</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="index.html" style="color: #cbd5e1; text-decoration: none; font-size: 0.85rem;">Storefront</a>
+      <a href="knowledge.html" style="color: #38bdf8; text-decoration: none; font-size: 0.85rem; font-weight: 600;">Knowledge Hub</a>
+      <button onclick="window.Auth.signOut()" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer;">Sign Out</button>
+    </div>
+  </header>
+
+  <div class="portal-layout">
+    <!-- Sidebar -->
+    <aside class="portal-sidebar">
+      <div style="padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 1.5rem;">
+        <div style="font-weight: 700; font-size: 1.1rem; color: #ffffff;" id="sidebar-doc-name">Doctor Loading...</div>
+        <div style="font-size: 0.8rem; color: #94a3b8;" id="sidebar-clinic-name">Clinic Portal</div>
+        <div style="margin-top: 0.5rem;" id="sidebar-tier-badge">
+          <span style="background: rgba(0, 168, 150, 0.2); color: #00a896; border: 1px solid #00a896; padding: 0.15rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700;">STANDARD CLINIC</span>
+        </div>
+      </div>
+
+      <button class="sidebar-btn active" onclick="switchSection('orders', this)">
+        <span>📦</span> Orders & Cargo Telemetry
+      </button>
+      <button class="sidebar-btn" onclick="switchSection('profile', this)">
+        <span>🩺</span> Clinic Profile & DCI
+      </button>
+      <button class="sidebar-btn" onclick="switchSection('membership', this)">
+        <span>⭐</span> Fellowship Membership
+      </button>
+      <button class="sidebar-btn" onclick="switchSection('files', this)">
+        <span>📁</span> Clinical Files & CBCT
+      </button>
+
+      <div style="margin-top: 2rem; padding: 1rem; background: rgba(0, 168, 150, 0.1); border: 1px solid rgba(0, 168, 150, 0.25); border-radius: 8px;">
+        <div style="font-size: 0.75rem; color: #38bdf8; font-weight: 700;">COLD-CHAIN SUPPORT</div>
+        <div style="font-size: 0.85rem; color: #ffffff; margin: 0.3rem 0;">1800-419-3368</div>
+        <div style="font-size: 0.7rem; color: #94a3b8;">Mon-Sat 8AM - 10PM IST</div>
+      </div>
+    </aside>
+
+    <!-- Main Content Body -->
+    <main class="portal-content">
+      
+      <!-- ORDERS SECTION -->
+      <section id="section-orders">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800;">Order & Cargo Telemetry</h2>
+            <p style="color: #64748b; font-size: 0.85rem;">Live Pan-India Dispatch via BlueDart Medical Express (0°C to 4°C Monitored)</p>
+          </div>
+          <a href="index.html#catalog" style="background: #00a896; color: white; padding: 0.6rem 1.25rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.85rem;">+ New Import Order</a>
+        </div>
+
+        <div id="orders-container">
+          <!-- Populated by script -->
+        </div>
+      </section>
+
+      <!-- PROFILE SECTION -->
+      <section id="section-profile" style="display: none;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Clinic & DCI Profile</h2>
+        <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 1.5rem;">Used for automatic computerized GST tax invoices and regulatory compliance.</p>
+
+        <div class="card" style="max-width: 600px;">
+          <form onsubmit="handleUpdateProfile(event)">
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Doctor Full Name</label>
+              <input type="text" id="prof-name" class="form-control" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;" required>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Clinic / Hospital Name</label>
+              <input type="text" id="prof-clinic" class="form-control" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;" required>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">DCI / State Reg. No.</label>
+                <input type="text" id="prof-dci" class="form-control" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;" required>
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Clinic GSTIN</label>
+                <input type="text" id="prof-gstin" class="form-control" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Clinic Address</label>
+              <textarea id="prof-address" rows="2" class="form-control" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;"></textarea>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+              <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">City</label>
+                <input type="text" id="prof-city" class="form-control" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">State</label>
+                <input type="text" id="prof-state" class="form-control" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">PIN Code</label>
+                <input type="text" id="prof-pincode" class="form-control" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+              </div>
+            </div>
+            <button type="submit" id="btn-save-profile" style="background: #00a896; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; cursor: pointer;">Save Profile Changes</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- MEMBERSHIP SECTION -->
+      <section id="section-membership" style="display: none;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Fellowship & Subscription Status</h2>
+        <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 1.5rem;">Unlock premium surgical masterclasses, CAD/CAM protocols and 10% wholesale cargo discount.</p>
+
+        <div class="card" style="max-width: 600px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div>
+              <div style="font-size: 0.8rem; color: #64748b;">Current Tier</div>
+              <div style="font-size: 1.25rem; font-weight: 800; color: #0f2438;" id="membership-tier-name">Free Standard</div>
+            </div>
+            <div id="membership-badge">
+              <span style="background: #e2e8f0; color: #475569; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">FREE</span>
+            </div>
+          </div>
+          <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1.5rem; line-height: 1.5;">
+            Join over 4,200 dental surgeons in the Murugan Impex Clinical Fellowship. Includes immediate access to all premium surgical videos, protocols, and prioritized cargo flights.
+          </p>
+          <a href="pricing.html" style="display: inline-block; background: #00a896; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 700;">Upgrade to Annual Fellowship (₹12,999/yr)</a>
+        </div>
+      </section>
+
+      <!-- FILES SECTION -->
+      <section id="section-files" style="display: none;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Clinical Files & CBCT Vault</h2>
+        <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 1.5rem;">Secure Supabase Storage for patient CBCT DICOM, surgical guides, and case documentation.</p>
+
+        <div class="card" style="max-width: 600px;">
+          <form onsubmit="handleFileUpload(event)">
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Select File (PDF, DICOM, JPEG, PNG)</label>
+              <input type="file" id="file-input" required style="width: 100%; padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Case Description</label>
+              <input type="text" id="file-desc" placeholder="e.g. Mandibular All-on-4 Pre-op CBCT" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+            </div>
+            <button type="submit" id="btn-upload" style="background: #00a896; color: white; border: none; padding: 0.65rem 1.25rem; border-radius: 8px; font-weight: 700; cursor: pointer;">Upload to Secure Vault</button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- MANDATORY SUPABASE SCRIPTS IN STRICT ORDER -->
+  <!-- 1. Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- 2. Supabase Configuration (creates window.supabaseClient) -->
+  <script src="supabase-config.js"></script>
+  <!-- 3. Shared Auth Module (window.Auth) -->
+  <script src="auth.js"></script>
+  <!-- 4. Storefront Logic (window.App) -->
+  <script src="app.js"></script>
+
+  <script>
+    var currentProfile = null;
+
+    document.addEventListener('DOMContentLoaded', async function () {
+      if (!window.Auth) return;
+      currentProfile = await window.Auth.requireAuth('login.html');
+      if (!currentProfile) return;
+
+      // Populate sidebar
+      document.getElementById('sidebar-doc-name').textContent = currentProfile.full_name || 'Doctor';
+      document.getElementById('sidebar-clinic-name').textContent = currentProfile.clinic_name || 'Clinic';
+
+      var isPremium = currentProfile.role === 'premium' || currentProfile.role === 'admin';
+      if (isPremium) {
+        document.getElementById('sidebar-tier-badge').innerHTML = '<span style="background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid #f59e0b; padding: 0.15rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700;">FELLOWSHIP ' + currentProfile.role.toUpperCase() + '</span>';
+        document.getElementById('membership-tier-name').textContent = 'Annual Fellowship Active';
+        document.getElementById('membership-badge').innerHTML = '<span style="background: #fef3c7; color: #b45309; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">ACTIVE</span>';
+      }
+
+      // Populate profile form
+      document.getElementById('prof-name').value = currentProfile.full_name || '';
+      document.getElementById('prof-clinic').value = currentProfile.clinic_name || '';
+      document.getElementById('prof-dci').value = currentProfile.dci_number || '';
+      document.getElementById('prof-gstin').value = currentProfile.gstin || '';
+      document.getElementById('prof-address').value = currentProfile.address || '';
+      document.getElementById('prof-city').value = currentProfile.city || '';
+      document.getElementById('prof-state').value = currentProfile.state || '';
+      document.getElementById('prof-pincode').value = currentProfile.pincode || '';
+
+      // Load orders
+      await loadOrders();
+    });
+
+    function switchSection(sec, btn) {
+      document.querySelectorAll('.sidebar-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      ['orders', 'profile', 'membership', 'files'].forEach(function (s) {
+        var el = document.getElementById('section-' + s);
+        if (el) el.style.display = (s === sec) ? 'block' : 'none';
+      });
+    }
+
+    async function loadOrders() {
+      var container = document.getElementById('orders-container');
+      if (!container || !window.App) return;
+
+      container.innerHTML = '<div style="color: #64748b; padding: 2rem; text-align: center;">Loading orders...</div>';
+      var res = await window.App.getMyOrders();
+
+      if (!res.orders || res.orders.length === 0) {
+        container.innerHTML = '<div class="card" style="text-align: center; padding: 3rem; color: #64748b;"><div style="font-size: 2rem; margin-bottom: 0.5rem;">📦</div><h3>No Orders Found</h3><p style="font-size: 0.85rem; margin-top: 0.5rem;">You have not placed any dental import orders yet.</p><a href="index.html#catalog" style="display: inline-block; margin-top: 1rem; background: #00a896; color: white; padding: 0.6rem 1.25rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.85rem;">Browse Medical Catalog</a></div>';
+        return;
+      }
+
+      var html = '';
+      res.orders.forEach(function (o) {
+        var statusColor = (o.status === 'delivered') ? '#10b981' : (o.status === 'in_transit' ? '#38bdf8' : '#f59e0b');
+        html += '<div class="card" style="margin-bottom: 1rem;">';
+        html += '<div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.75rem;">';
+        html += '<div>';
+        html += '<div style="font-weight: 800; font-size: 1.1rem; color: #0f2438;">' + o.order_reference + '</div>';
+        html += '<div style="font-size: 0.75rem; color: #64748b;">Invoice: ' + (o.invoice_number || 'N/A') + ' &bull; ' + (window.Auth.formatDate(o.created_at)) + '</div>';
+        html += '</div>';
+        html += '<div style="text-align: right;">';
+        html += '<span style="background: ' + statusColor + '22; color: ' + statusColor + '; border: 1px solid ' + statusColor + '44; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">' + (o.status || 'Processing') + '</span>';
+        html += '<div style="font-size: 1.1rem; font-weight: 800; color: #00a896; margin-top: 0.25rem;">₹' + Number(o.total_amount || 0).toLocaleString('en-IN') + '</div>';
+        html += '</div></div>';
+
+        html += '<div style="font-size: 0.8rem; color: #475569; margin-bottom: 0.75rem;">';
+        html += '<strong>✈ Courier Cold-Chain:</strong> BlueDart Medical Express &bull; AWB: <strong style="color: #028090;">' + (o.awb_number || 'Pending') + '</strong>';
+        html += '</div>';
+
+        html += '<div style="font-size: 0.8rem; color: #64748b;">';
+        html += '<strong>Delivery:</strong> ' + (o.shipping_address || '') + ', ' + (o.shipping_city || '') + ' ' + (o.shipping_pincode || '');
+        html += '</div>';
+        html += '</div>';
+      });
+
+      container.innerHTML = html;
+    }
+
+    async function handleUpdateProfile(e) {
+      e.preventDefault();
+      var btn = document.getElementById('btn-save-profile');
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+
+      var fields = {
+        full_name: document.getElementById('prof-name').value,
+        clinic_name: document.getElementById('prof-clinic').value,
+        dci_number: document.getElementById('prof-dci').value,
+        gstin: document.getElementById('prof-gstin').value,
+        address: document.getElementById('prof-address').value,
+        city: document.getElementById('prof-city').value,
+        state: document.getElementById('prof-state').value,
+        pincode: document.getElementById('prof-pincode').value
+      };
+
+      var res = await window.Auth.updateProfile(fields);
+      btn.disabled = false;
+      btn.textContent = 'Save Profile Changes';
+
+      if (res.error) {
+        window.Auth.showToast(res.error.message, 'error');
+      } else {
+        window.Auth.showToast('Profile updated successfully!', 'success');
+        document.getElementById('sidebar-doc-name').textContent = fields.full_name;
+        document.getElementById('sidebar-clinic-name').textContent = fields.clinic_name;
+      }
+    }
+
+    async function handleFileUpload(e) {
+      e.preventDefault();
+      var file = document.getElementById('file-input').files[0];
+      var desc = document.getElementById('file-desc').value;
+      if (!file) return;
+
+      var btn = document.getElementById('btn-upload');
+      btn.disabled = true;
+      btn.textContent = 'Uploading to Vault...';
+
+      var res = await window.App.uploadClinicalFile(file, desc);
+      btn.disabled = false;
+      btn.textContent = 'Upload to Secure Vault';
+
+      if (res.error) {
+        window.Auth.showToast(res.error.message, 'error');
+      } else {
+        window.Auth.showToast('File stored in Supabase Storage!', 'success');
+        document.getElementById('file-input').value = '';
+        document.getElementById('file-desc').value = '';
+      }
+    }
+  </script>
+</body>
+</html>

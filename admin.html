@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Executive Telemetry — Murugan Impex™</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: calc(100vh - 70px);
+    }
+    .admin-sidebar {
+      background: #061527;
+      color: #94a3b8;
+      padding: 1.5rem;
+    }
+    .admin-content {
+      padding: 2rem;
+      background: #f8fafc;
+    }
+    .nav-btn {
+      width: 100%;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+    }
+    .nav-btn.active {
+      background: #00a896;
+      color: white;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.25rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      background: #f1f5f9;
+      color: #475569;
+      font-weight: 700;
+      border-bottom: 1px solid #cbd5e1;
+    }
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      color: #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Admin Bar -->
+  <header style="background: #07192f; color: white; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="index.html" style="color: white; text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; font-weight: 800;">MURUGAN IMPEX™</a>
+      <span style="background: #e76f51; font-size: 0.65rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 4px; letter-spacing: 0.05em;">ADMIN EXECUTIVE</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="dashboard.html" style="color: #94a3b8; text-decoration: none; font-size: 0.85rem;">Doctor Portal</a>
+      <a href="index.html" style="color: #94a3b8; text-decoration: none; font-size: 0.85rem;">Storefront</a>
+      <button onclick="window.Auth.signOut()" style="background: rgba(239,68,68,0.2); border: 1px solid #ef4444; color: #ef4444; padding: 0.3rem 0.75rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer;">Sign Out</button>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div style="font-size: 0.7rem; font-weight: 800; color: #38bdf8; letter-spacing: 0.1em; margin-bottom: 1rem;">CONTROL DESK</div>
+      <button class="nav-btn active" onclick="switchTab('orders', this)">📦 All Orders</button>
+      <button class="nav-btn" onclick="switchTab('users', this)">🩺 Registered Clinics</button>
+      <button class="nav-btn" onclick="switchTab('publish', this)">✍ Author Masterclass</button>
+      <button class="nav-btn" onclick="switchTab('payments', this)">💳 Payment Ledger</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-content">
+      <!-- Top KPIs -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+        <div class="stat-card">
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 700;">TOTAL CLINIC ORDERS</div>
+          <div style="font-size: 1.75rem; font-weight: 800; color: #0f2438; margin: 0.25rem 0;" id="kpi-orders">...</div>
+          <div style="font-size: 0.75rem; color: #00a896;">CDSCO Cold-Chain</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 700;">REGISTERED CLINICS</div>
+          <div style="font-size: 1.75rem; font-weight: 800; color: #0f2438; margin: 0.25rem 0;" id="kpi-clinics">...</div>
+          <div style="font-size: 0.75rem; color: #38bdf8;">DCI Verified</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 700;">TOTAL REVENUE</div>
+          <div style="font-size: 1.75rem; font-weight: 800; color: #00a896; margin: 0.25rem 0;" id="kpi-revenue">...</div>
+          <div style="font-size: 0.75rem; color: #10b981;">18% GST Accounted</div>
+        </div>
+      </div>
+
+      <!-- ORDERS TAB -->
+      <section id="tab-orders">
+        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem;">Pan-India Cargo Orders</h3>
+        <div style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Order Ref</th>
+                <th>Doctor / Clinic</th>
+                <th>AWB / Courier</th>
+                <th>Amount (incl. GST)</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="orders-table-body">
+              <tr><td colspan="6" style="text-align: center; color: #94a3b8;">Loading orders...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- USERS TAB -->
+      <section id="tab-users" style="display: none;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem;">Registered Doctors & Clinics</h3>
+        <div style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Doctor Name</th>
+                <th>Clinic Name</th>
+                <th>DCI Reg. No.</th>
+                <th>GSTIN</th>
+                <th>Role Tier</th>
+                <th>Change Role</th>
+              </tr>
+            </thead>
+            <tbody id="users-table-body">
+              <tr><td colspan="6" style="text-align: center; color: #94a3b8;">Loading clinics...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PUBLISH TAB -->
+      <section id="tab-publish" style="display: none;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem;">Publish Clinical Protocol / Masterclass</h3>
+        <div style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 1.5rem; max-width: 700px;">
+          <form onsubmit="handlePublishArticle(event)">
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Masterclass Title</label>
+              <input type="text" id="art-title" required placeholder="e.g. Mandibular All-on-4 Immediate Loading Protocol" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">URL Slug</label>
+                <input type="text" id="art-slug" required placeholder="mandibular-all-on-4-protocol" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Clinical Category</label>
+                <select id="art-category" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+                  <option value="Implantology">Implantology</option>
+                  <option value="CAD/CAM">CAD/CAM</option>
+                  <option value="Endodontics">Endodontics</option>
+                  <option value="Biomaterials">Biomaterials</option>
+                  <option value="Orthodontics">Orthodontics</option>
+                </select>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Access Tier</label>
+                <select id="art-tier" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+                  <option value="free">Free for All Doctors</option>
+                  <option value="premium">Premium Fellowship Gated</option>
+                </select>
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Read / Study Time</label>
+                <input type="text" id="art-readtime" value="15 min" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;">
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Executive Clinical Summary (Excerpt)</label>
+              <textarea id="art-excerpt" rows="2" required placeholder="Concise clinical summary..." style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;"></textarea>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">Full Surgical Protocol (HTML / Markdown)</label>
+              <textarea id="art-content" rows="6" required placeholder="Step 1: Flap reflection and osteotomy preparation..." style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 6px;"></textarea>
+            </div>
+            <button type="submit" id="btn-publish" style="background: #00a896; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 700; cursor: pointer;">Publish to Knowledge Hub</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- PAYMENTS TAB -->
+      <section id="tab-payments" style="display: none;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem;">Payment Ledger</h3>
+        <div style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Invoice No</th>
+                <th>Amount</th>
+                <th>Method</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="payments-table-body">
+              <tr><td colspan="5" style="text-align: center; color: #94a3b8;">Loading payments...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MANDATORY SUPABASE SCRIPTS IN STRICT ORDER -->
+  <!-- 1. Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- 2. Supabase Configuration (creates window.supabaseClient) -->
+  <script src="supabase-config.js"></script>
+  <!-- 3. Shared Auth Module (window.Auth) -->
+  <script src="auth.js"></script>
+  <!-- 4. Storefront Logic (window.App) -->
+  <script src="app.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      if (!window.Auth) return;
+      var profile = await window.Auth.requireAdminAccess('index.html');
+      if (!profile) return;
+
+      await loadDashboardData();
+    });
+
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.nav-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      ['orders', 'users', 'publish', 'payments'].forEach(function (t) {
+        var el = document.getElementById('tab-' + t);
+        if (el) el.style.display = (t === tab) ? 'block' : 'none';
+      });
+    }
+
+    async function loadDashboardData() {
+      // Load Orders
+      var ordRes = await window.App.adminGetAllOrders();
+      var orders = ordRes.orders || [];
+      document.getElementById('kpi-orders').textContent = orders.length;
+
+      var totalRev = orders.reduce(function (sum, o) { return sum + Number(o.total_amount || 0); }, 0);
+      document.getElementById('kpi-revenue').textContent = '₹' + totalRev.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+
+      var ordTbody = document.getElementById('orders-table-body');
+      if (orders.length === 0) {
+        ordTbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #94a3b8; padding: 2rem;">No orders yet.</td></tr>';
+      } else {
+        var html = '';
+        orders.forEach(function (o) {
+          html += '<tr>';
+          html += '<td><strong>' + o.order_reference + '</strong><br><span style="font-size: 0.75rem; color: #64748b;">' + (o.invoice_number || '') + '</span></td>';
+          html += '<td>' + (o.doctor_name || 'Doctor') + '<br><span style="font-size: 0.75rem; color: #64748b;">' + (o.clinic_name || '') + '</span></td>';
+          html += '<td><span style="color: #028090; font-weight: 700;">' + (o.awb_number || 'Pending') + '</span><br><span style="font-size: 0.75rem; color: #64748b;">BlueDart Cold-Chain</span></td>';
+          html += '<td><strong>₹' + Number(o.total_amount || 0).toLocaleString('en-IN') + '</strong></td>';
+          html += '<td><select onchange="updateOrderStatus(\'' + o.id + '\', this.value)" style="padding: 0.3rem 0.5rem; border-radius: 4px; border: 1px solid #cbd5e1; font-size: 0.8rem;">';
+          ['processing', 'in_transit', 'delivered', 'cancelled'].forEach(function (st) {
+            html += '<option value="' + st + '" ' + (o.status === st ? 'selected' : '') + '>' + st.toUpperCase() + '</option>';
+          });
+          html += '</select></td>';
+          html += '<td><button onclick="window.Auth.showToast(\'Printing Tax Invoice ' + (o.invoice_number || '') + '\', \'info\')" style="background: none; border: 1px solid #00a896; color: #00a896; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Invoice PDF</button></td>';
+          html += '</tr>';
+        });
+        ordTbody.innerHTML = html;
+      }
+
+      // Load Users
+      var usrRes = await window.App.adminGetAllProfiles();
+      var users = usrRes.profiles || [];
+      document.getElementById('kpi-clinics').textContent = users.length;
+
+      var usrTbody = document.getElementById('users-table-body');
+      if (users.length === 0) {
+        usrTbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #94a3b8; padding: 2rem;">No clinic profiles recorded yet.</td></tr>';
+      } else {
+        var uHtml = '';
+        users.forEach(function (u) {
+          uHtml += '<tr>';
+          uHtml += '<td><strong>' + (u.full_name || 'Dr. Member') + '</strong></td>';
+          uHtml += '<td>' + (u.clinic_name || 'Dental Clinic') + '</td>';
+          uHtml += '<td>' + (u.dci_number || 'Pending') + '</td>';
+          uHtml += '<td>' + (u.gstin || 'N/A') + '</td>';
+          uHtml += '<td><span style="font-weight: 700; color: #00a896; text-transform: uppercase;">' + (u.role || 'free') + '</span></td>';
+          uHtml += '<td><select onchange="updateUserRole(\'' + u.id + '\', this.value)" style="padding: 0.25rem 0.5rem; border-radius: 4px; border: 1px solid #cbd5e1; font-size: 0.75rem;">';
+          ['free', 'premium', 'admin'].forEach(function (r) {
+            uHtml += '<option value="' + r + '" ' + (u.role === r ? 'selected' : '') + '>' + r.toUpperCase() + '</option>';
+          });
+          uHtml += '</select></td>';
+          uHtml += '</tr>';
+        });
+        usrTbody.innerHTML = uHtml;
+      }
+    }
+
+    async function updateOrderStatus(orderId, newStatus) {
+      var res = await window.App.adminUpdateOrderStatus(orderId, newStatus);
+      if (res.error) {
+        window.Auth.showToast(res.error.message, 'error');
+      } else {
+        window.Auth.showToast('Order status updated to ' + newStatus, 'success');
+      }
+    }
+
+    async function updateUserRole(userId, newRole) {
+      var res = await window.App.adminUpdateUserRole(userId, newRole);
+      if (res.error) {
+        window.Auth.showToast(res.error.message, 'error');
+      } else {
+        window.Auth.showToast('User role updated to ' + newRole, 'success');
+      }
+    }
+
+    async function handlePublishArticle(e) {
+      e.preventDefault();
+      var btn = document.getElementById('btn-publish');
+      btn.disabled = true;
+      btn.textContent = 'Publishing to Knowledge Hub...';
+
+      var article = {
+        title: document.getElementById('art-title').value,
+        slug: document.getElementById('art-slug').value,
+        category: document.getElementById('art-category').value,
+        tier: document.getElementById('art-tier').value,
+        read_time: document.getElementById('art-readtime').value,
+        excerpt: document.getElementById('art-excerpt').value,
+        full_content: document.getElementById('art-content').value,
+        author_name: 'Dr. Murugan Impex Clinical Panel'
+      };
+
+      var res = await window.App.adminPublishArticle(article);
+      btn.disabled = false;
+      btn.textContent = 'Publish to Knowledge Hub';
+
+      if (res.error) {
+        window.Auth.showToast(res.error.message, 'error');
+      } else {
+        window.Auth.showToast('Masterclass published successfully!', 'success');
+        document.getElementById('art-title').value = '';
+        document.getElementById('art-slug').value = '';
+        document.getElementById('art-excerpt').value = '';
+        document.getElementById('art-content').value = '';
+      }
+    }
+  </script>
+</body>
+</html>

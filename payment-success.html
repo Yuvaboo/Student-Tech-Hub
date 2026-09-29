@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Verification & Activation — Murugan Impex™</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="background: var(--bg-main, #f4f7fa); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem;">
+
+  <div style="background: white; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); max-width: 500px; width: 100%; padding: 2.5rem; text-align: center;">
+    <div style="width: 64px; height: 64px; background: #dcfce7; color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem;">
+      ✓
+    </div>
+
+    <h2 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #0f2438; margin-bottom: 0.5rem;">
+      Fellowship Activated!
+    </h2>
+    <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem;" id="success-desc">
+      Your clinic subscription has been verified and registered with Murugan Impex™ Clinical Desk.
+    </p>
+
+    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; margin-bottom: 2rem; text-align: left; font-size: 0.85rem;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+        <span style="color: #64748b;">Invoice Reference:</span>
+        <strong id="inv-display">INV/2026-27/...</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+        <span style="color: #64748b;">Member Status:</span>
+        <strong style="color: #00a896;">FELLOWSHIP ACTIVE</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between;">
+        <span style="color: #64748b;">Tax Credit:</span>
+        <strong style="color: #10b981;">18% GST Accounted</strong>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1rem;">
+      <a href="knowledge.html" style="flex: 1; padding: 0.75rem; background: #00a896; color: white; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem;">Access Masterclasses</a>
+      <a href="dashboard.html" style="flex: 1; padding: 0.75rem; background: #0f2438; color: white; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem;">Clinic Portal</a>
+    </div>
+  </div>
+
+  <!-- MANDATORY SUPABASE SCRIPTS IN STRICT ORDER -->
+  <!-- 1. Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- 2. Supabase Configuration (creates window.supabaseClient) -->
+  <script src="supabase-config.js"></script>
+  <!-- 3. Shared Auth Module (window.Auth) -->
+  <script src="auth.js"></script>
+  <!-- 4. Storefront Logic (window.App) -->
+  <script src="app.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      var params = new URLSearchParams(window.location.search);
+      var sessionId = params.get('session_id');
+
+      if (window.Auth) {
+        var profile = await window.Auth.requireAuth('login.html');
+        if (profile) {
+          // Elevate role to premium
+          await window.Auth.updateProfile({ role: 'premium' });
+          document.getElementById('inv-display').textContent = window.Auth.generateInvoiceNumber();
+          window.Auth.showToast('Fellowship activated successfully!', 'success');
+        }
+      }
+    });
+  </script>
+</body>
+</html>

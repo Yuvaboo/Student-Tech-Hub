@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical Protocol Reader — Murugan Impex™</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="knowledge.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="background: var(--bg-main, #f4f7fa);">
+
+  <!-- Top Announcement -->
+  <aside class="top-announcement">
+    <div class="container announcement-inner">
+      <div class="announcement-left">
+        <a href="knowledge.html" class="link-btn">← Back to All Knowledge Articles</a>
+      </div>
+      <div class="announcement-right">
+        <a href="index.html" class="link-btn">Storefront</a>
+        <span class="divider">|</span>
+        <a href="dashboard.html" class="link-btn">Doctor Portal</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header style="background: #0f2438; color: white; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="knowledge.html" style="color: white; text-decoration: none; font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800;">
+        MURUGAN IMPEX <span style="color: #00a896; font-size: 0.8rem;">SURGICAL ARCHIVE</span>
+      </a>
+      <a href="pricing.html" style="background: #f59e0b; color: #07192f; padding: 0.35rem 0.9rem; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.8rem;">Fellowship Status</a>
+    </div>
+  </header>
+
+  <!-- Article Reader Container -->
+  <main class="container" style="margin-top: 2rem; margin-bottom: 4rem;">
+    <div id="article-reader-container" class="kh-reader-container">
+      <p style="text-align: center; color: #94a3b8; padding: 3rem;">Loading clinical protocol...</p>
+    </div>
+  </main>
+
+  <footer style="background: #07192f; color: #94a3b8; padding: 2rem 0; font-size: 0.8rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
+    <p>&copy; 2026 Murugan Impex™ Clinical Desk. Strictly for registered dental surgeons.</p>
+  </footer>
+
+  <!-- MANDATORY SUPABASE SCRIPTS IN STRICT ORDER -->
+  <!-- 1. Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- 2. Supabase Configuration (creates window.supabaseClient) -->
+  <script src="supabase-config.js"></script>
+  <!-- 3. Shared Auth Module (window.Auth) -->
+  <script src="auth.js"></script>
+  <!-- 4. Storefront Logic (window.App) -->
+  <script src="app.js"></script>
+  <!-- 5. Knowledge Hub Module (window.Knowledge) -->
+  <script src="knowledge.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      var container = document.getElementById('article-reader-container');
+      if (window.Knowledge) {
+        await window.Knowledge.renderArticleReader(container);
+      }
+    });
+  </script>
+</body>
+</html>
