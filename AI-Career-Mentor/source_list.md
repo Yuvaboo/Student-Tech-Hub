@@ -1,0 +1,65 @@
+# Source List
+
+All items in this dataset are grounded in the following real, publicly available sources:
+
+- AWS
+- Al Sweigart
+- Amazon
+- Arduino
+- CNCF
+- Cisco
+- Codecademy
+- DeepLearning.AI
+- Django Software Foundation
+- Docker Inc.
+- Express
+- Fast.ai
+- FastAPI
+- Git
+- GitHub
+- Google
+- Google Cloud
+- HackerRank
+- Harvard / edX
+- Hugging Face
+- IBM
+- ISO/IEC
+- Kaggle
+- LangChain
+- LeetCode
+- Linux Journey
+- MIT OCW
+- Marijn Haverbeke
+- Meta
+- Microsoft
+- Mozilla
+- NumFOCUS
+- OSSU
+- OWASP
+- OffSec
+- OpenAI
+- OpenJS Foundation
+- OverTheWire
+- Peter Cottle
+- PostgreSQL Global Development Group
+- Project Euler
+- PyTorch Foundation
+- Python Software Foundation
+- Rails
+- Rapptz
+- Raspberry Pi Foundation
+- RegexOne
+- Roadmap.sh
+- Rust Foundation
+- SQLZoo
+- Scikit-learn developers
+- Stanford University
+- The Odin Project
+- TodoMVC
+- University of Helsinki
+- VMware
+- Vercel
+- Vue.js
+- W3C
+- WHATWG
+- freeCodeCamp

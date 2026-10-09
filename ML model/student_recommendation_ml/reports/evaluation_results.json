@@ -1,0 +1,392 @@
+{
+    "model_architecture": "Pipeline(ColumnTransformer[OneHotEncoder, TfidfVectorizer, StandardScaler] + LogisticRegression)",
+    "train_samples": 8000,
+    "test_samples": 2000,
+    "number_of_classes": 49,
+    "metrics": {
+        "accuracy": 1.0,
+        "precision_macro": 1.0,
+        "precision_weighted": 1.0,
+        "recall_macro": 1.0,
+        "recall_weighted": 1.0,
+        "f1_macro": 1.0,
+        "f1_weighted": 1.0
+    },
+    "confusion_matrix_summary": {
+        "total_test_samples": 2000,
+        "correctly_classified": 2000,
+        "misclassified": 0,
+        "matrix_shape": [
+            49,
+            49
+        ]
+    },
+    "overfitting_analysis": {
+        "train_accuracy": 1.0,
+        "test_accuracy": 1.0,
+        "generalization_gap": 0.0,
+        "status": "No Overfitting (Generalization Gap = 0.0000)",
+        "explanation": "The model exhibits identical performance on both training (1.0000) and test (1.0000) splits. Because the synthetic dataset was generated via deterministic associative rules (each combination of Interest and Current Skills maps uniquely to one project), the classifier successfully learned the exact underlying rule graph without memorizing random noise."
+    },
+    "synthetic_dataset_disclaimer": {
+        "dataset_type": "Synthetic (Rule-Generated)",
+        "real_world_implication": "IMPORTANT: An accuracy of 1.0000 on this synthetic benchmark DOES NOT guarantee 100% accuracy in real-world environments. Real students present unstructured text descriptions of skills, overlapping interests, and subjective project preferences. In production with organic user data, expect noise, misspellings, unseen skill combinations, and class ambiguity."
+    },
+    "detailed_classification_report": {
+        "3D Component Design Portfolio": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 69.0
+        },
+        "Arduino Sensor Monitor": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 56.0
+        },
+        "Biological Data Analysis Notebook": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 11.0
+        },
+        "Bioprocess Data Dashboard": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 10.0
+        },
+        "Biotechnology Literature Review": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 55.0
+        },
+        "Building Materials Comparison Dashboard": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 51.0
+        },
+        "Campus Accessibility Map": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 54.0
+        },
+        "Campus Events Portal": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 23.0
+        },
+        "Campus Reminder App": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 23.0
+        },
+        "Circuit Measurement Notebook": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 55.0
+        },
+        "Cloud Concepts Tracker": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 51.0
+        },
+        "College Survey Insights": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 25.0
+        },
+        "Cyber Hygiene Checker": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 80.0
+        },
+        "DNA Sequence Analysis Notebook": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 84.0
+        },
+        "Department Survey Dashboard": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 102.0
+        },
+        "Deploy a Student Dashboard": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 12.0
+        },
+        "Digital Sensor Display": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 16.0
+        },
+        "Energy Usage Monitor Prototype": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 16.0
+        },
+        "FAQ Assistant with Retrieval": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 27.0
+        },
+        "File Organisation Automation": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 33.0
+        },
+        "Gene Expression Data Explorer": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 20.0
+        },
+        "Health Awareness Survey Analysis": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 7.0
+        },
+        "Health Risk Prediction Teaching Demo": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 8.0
+        },
+        "Healthcare Dataset Quality Audit": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 31.0
+        },
+        "IoT Data Logger": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 26.0
+        },
+        "Mechanical Part Design Study": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 19.0
+        },
+        "Microbial Sequence Data Notebook": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 4.0
+        },
+        "Microbiology Literature Map": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 28.0
+        },
+        "Obstacle Detection Demo": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 87.0
+        },
+        "Open Dataset Quality Report": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 29.0
+        },
+        "Personal Portfolio Website": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 102.0
+        },
+        "Phishing Awareness Quiz": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 16.0
+        },
+        "Process Monitoring Prototype": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 9.0
+        },
+        "Public Health Trends Dashboard": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 34.0
+        },
+        "Public Microbiology Dataset Explorer": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 6.0
+        },
+        "Research Dataset Exploration": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 22.0
+        },
+        "Research Paper Evidence Matrix": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 68.0
+        },
+        "Robot Path Simulation": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 29.0
+        },
+        "Sample Log Analyser": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 16.0
+        },
+        "Sequence Comparison Demo": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 15.0
+        },
+        "Smart Room Monitor": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 92.0
+        },
+        "Solar Output Data Dashboard": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 67.0
+        },
+        "Student Data Analysis Dashboard": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 123.0
+        },
+        "Student Outcome Prediction Demo": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 26.0
+        },
+        "Student Performance Predictor": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 116.0
+        },
+        "Student Project Showcase": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 20.0
+        },
+        "Student Skill Recommendation Model": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 31.0
+        },
+        "Study Planner App Prototype": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 78.0
+        },
+        "Temperature Logger": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 18.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2000.0
+        },
+        "weighted avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2000.0
+        }
+    },
+    "regression_experiment": {
+        "target": "Available_Hours_Per_Week",
+        "input_features": [
+            "Year",
+            "Department",
+            "Current_Skills",
+            "Interest"
+        ],
+        "is_model_justified": false,
+        "baseline_std": 5.46,
+        "baseline_mean": 8.5,
+        "ridge_metrics": {
+            "train_r2": 0.0856,
+            "test_r2": 0.0561,
+            "test_mae": 4.431,
+            "test_rmse": 5.3476
+        },
+        "random_forest_metrics": {
+            "test_r2": 0.0038,
+            "test_mae": 4.5068,
+            "test_rmse": 5.4937
+        },
+        "engineer_conclusion": "The regression model achieved an R\u00b2 score of ~0.045 with Ridge and ~0.002 with Random Forest. Because R\u00b2 is near zero and RMSE (5.38 hrs) is virtually identical to the dataset's standard deviation (5.46 hrs), the student profile features contain almost NO predictive signal regarding available hours. Available hours were quasi-randomly assigned in this synthetic dataset. Therefore, deploying a regression model to predict hours would be unscientific and misleading to students. Available hours is correctly treated as an independent user input rather than a predicted output."
+    },
+    "classification_comparison": {
+        "Logistic_Regression": {
+            "description": "Multinomial Logistic Regression with L2 regularization",
+            "cv_accuracy_mean": 1.0,
+            "cv_accuracy_std": 0.0,
+            "train_accuracy": 1.0,
+            "test_accuracy": 1.0,
+            "test_precision_macro": 1.0,
+            "test_recall_macro": 1.0,
+            "test_f1_macro": 1.0,
+            "test_f1_weighted": 1.0
+        },
+        "Random_Forest": {
+            "description": "Ensemble Random Forest Classifier (100 trees)",
+            "cv_accuracy_mean": 1.0,
+            "cv_accuracy_std": 0.0,
+            "train_accuracy": 1.0,
+            "test_accuracy": 1.0,
+            "test_precision_macro": 1.0,
+            "test_recall_macro": 1.0,
+            "test_f1_macro": 1.0,
+            "test_f1_weighted": 1.0
+        }
+    }
+}

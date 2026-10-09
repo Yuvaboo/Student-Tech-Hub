@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+streamlit
+pandas
+scikit-learn
+sentence-transformers
+chromadb
+pydantic
+apscheduler
+google-api-python-client
+python-dotenv
+sqlalchemy
+google-genai
+pytest
