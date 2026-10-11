@@ -1,0 +1,10 @@
+REGRESSION EXPERIMENT - Available_Hours_Per_Week
+=================================================================
+
+MAE   : 4.498 hours
+RMSE  : 5.489 hours
+R2    : 0.0054
+
+Verdict: Low predictive relationship (R2 near zero).
+
+NOTE: Regression is kept completely separate from the project recommendation classifier.

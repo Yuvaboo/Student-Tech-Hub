@@ -1,22 +1,7 @@
-================================================================================
-      STUDENT PROJECT RECOMMENDATION - CLASSIFICATION REPORT
-================================================================================
+STUDENT PROJECT RECOMMENDATION MODEL
+Classification Report
+=================================================================
 
-Model: Pipeline(ColumnTransformer[OneHotEncoder, TfidfVectorizer, StandardScaler] + LogisticRegression)
-Test Samples: 2000 | Total Classes: 49
-Test Accuracy: 1.0000 | F1 Weighted: 1.0000
-
-OVERFITTING ANALYSIS:
-  Train Accuracy: 1.0000
-  Test Accuracy:  1.0000
-  Status:         No Overfitting (Generalization Gap = 0.0000)
-
-SYNTHETIC DATASET LIMITATION:
-  IMPORTANT: An accuracy of 1.0000 on this synthetic benchmark DOES NOT guarantee 100% accuracy in real-world environments. Real students present unstructured text descriptions of skills, overlapping interests, and subjective project preferences. In production with organic user data, expect noise, misspellings, unseen skill combinations, and class ambiguity.
-
---------------------------------------------------------------------------------
-PER-CLASS METRICS:
---------------------------------------------------------------------------------
                                          precision    recall  f1-score   support
 
           3D Component Design Portfolio       1.00      1.00      1.00        69
@@ -28,7 +13,7 @@ Building Materials Comparison Dashboard       1.00      1.00      1.00        51
                Campus Accessibility Map       1.00      1.00      1.00        54
                    Campus Events Portal       1.00      1.00      1.00        23
                     Campus Reminder App       1.00      1.00      1.00        23
-           Circuit Measurement Notebook       1.00      1.00      1.00        55
+           Circuit Measurement Notebook       0.95      1.00      0.97        55
                  Cloud Concepts Tracker       1.00      1.00      1.00        51
                 College Survey Insights       1.00      1.00      1.00        25
                   Cyber Hygiene Checker       1.00      1.00      1.00        80
@@ -67,10 +52,10 @@ Building Materials Comparison Dashboard       1.00      1.00      1.00        51
                Student Project Showcase       1.00      1.00      1.00        20
      Student Skill Recommendation Model       1.00      1.00      1.00        31
             Study Planner App Prototype       1.00      1.00      1.00        78
-                     Temperature Logger       1.00      1.00      1.00        18
+                     Temperature Logger       1.00      0.83      0.91        18
 
                                accuracy                           1.00      2000
                               macro avg       1.00      1.00      1.00      2000
                            weighted avg       1.00      1.00      1.00      2000
 
-================================================================================
+NOTE: Dataset is synthetic. Results reflect fit to generated data, not real recommendation quality.
